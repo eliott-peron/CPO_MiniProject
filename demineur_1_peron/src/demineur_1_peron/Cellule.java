@@ -78,14 +78,7 @@ public class Cellule {
                 return "\u001B[31m"; // Rouge
             case 4:
                 return "\u001B[35m"; // Magenta
-            case 5:
-                return "\u001B[33m"; // Jaune
-            case 6:
-                return "\u001B[36m"; // Cyan
-            case 7:
-                return "\u001B[30m"; // Noir
-            case 8:
-                return "\u001B[37m"; // Blanc
+
             default:
                 return "\u001B[0m"; // Réinitialisation (aucune couleur)
         }
