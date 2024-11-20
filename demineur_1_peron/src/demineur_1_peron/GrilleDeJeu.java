@@ -36,6 +36,11 @@ public class GrilleDeJeu {
     public int getNbBombes() {
         return nbBombes;
     }
+
+    public Cellule[][] getMatriceCellules() {
+        return matriceCellules;
+    }
+    
     
     
     
@@ -145,18 +150,39 @@ public class GrilleDeJeu {
 
     // Méthode pour afficher la grille (représentation textuelle)
     @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
+public String toString() {
+    StringBuilder builder = new StringBuilder();
 
-        for (int i = 0; i < nbLignes; i++) {
-            for (int j = 0; j < nbColonnes; j++) {
-                builder.append(matriceCellules[i][j].toString()).append(" ");
-            }
-            builder.append("\n");
-        }
+    // Calculer le nombre maximal de chiffres pour les colonnes et les lignes
+    int maxColonnes = Integer.toString(nbColonnes - 1).length(); // Longueur du plus grand numéro de colonne
+    int maxLignes = Integer.toString(nbLignes - 1).length(); // Longueur du plus grand numéro de ligne
 
-        return builder.toString();
+    // Afficher la numérotation des colonnes
+    builder.append("   "); // Espace pour la ligne de numérotation des colonnes
+    for (int j = 0; j < nbColonnes; j++) {
+        builder.append(String.format("% " + maxColonnes + "d ", j)); // Formatage pour aligner les numéros des colonnes
     }
-    
-    
+    builder.append("\n");
+
+    // Afficher les lignes de la grille avec délimitations
+    for (int i = 0; i < nbLignes; i++) {
+        // Numérotation des lignes avec formatage pour aligner correctement
+        builder.append(String.format("%" + (maxLignes + 1) + "d", i)); // Formatage pour aligner les numéros de ligne
+
+        for (int j = 0; j < nbColonnes; j++) {
+            // Affichage des cellules avec une largeur fixe pour un alignement correct
+            builder.append("| " + matriceCellules[i][j].toString() + " ");
+        }
+        builder.append("|\n");
+
+        // Ajouter une ligne de délimitation après chaque ligne de la grille
+        builder.append("   ");
+        for (int j = 0; j < nbColonnes; j++) {
+            builder.append("----"); // Délimitation de chaque case
+        }
+        builder.append("\n");
+    }
+
+    return builder.toString();
+}
 }
