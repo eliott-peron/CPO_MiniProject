@@ -15,9 +15,9 @@ public class partie {
     // Méthode pour choisir le niveau
     private void choisirNiveau() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choisissez un niveau de difficulté :");
-        System.out.println("1. Débutant (9x9, 10 mines)");
-        System.out.println("2. Intermédiaire (16x16, 40 mines)");
+        System.out.println("Choisissez un niveau de difficulte :");
+        System.out.println("1. Debutant (9x9, 10 mines)");
+        System.out.println("2. Intermediaire (16x16, 40 mines)");
         System.out.println("3. Expert (30x16, 99 mines)");
 
         int choix = -1;
@@ -39,7 +39,7 @@ public class partie {
                         System.out.println("Choix invalide. Veuillez entrer 1, 2 ou 3.");
                 }
             } catch (Exception e) {
-                System.out.println("Entrée invalide, veuillez réessayer.");
+                System.out.println("Entree invalide, veuillez reessayer.");
                 scanner.nextLine(); // Nettoie le buffer
             }
         }
@@ -55,12 +55,12 @@ public class partie {
         Scanner scanner = new Scanner(System.in);
 
         // Affichage initial de la grille
-        System.out.println("Bienvenue dans le jeu Démineur !");
+        System.out.println("Bienvenue dans le jeu Demineur !");
         System.out.println("Voici la grille de jeu :");
         System.out.println(grille.toString());
 
         while (enCours) {
-            System.out.println("Entrez les coordonnées de la cellule à révéler (ligne et colonne) :");
+            System.out.println("Entrez les coordonnees de la cellule à reveler (ligne et colonne) :");
             try {
                 // Récupération des coordonnées du joueur
                 System.out.print("Ligne : ");
@@ -77,20 +77,20 @@ public class partie {
 
                 // Vérification du résultat
                 if (!resultat) {
-                    System.out.println("Vous avez révélé une bombe ! Partie terminée.");
+                    System.out.println("Vous avez revele une bombe ! Partie terminee.");
                     enCours = false;
                 } else if (grille.toutesCellulesRevelees()) {
-                    System.out.println("Félicitations ! Vous avez découvert toutes les cellules sûres.");
+                    System.out.println("Felicitations ! Vous avez découvert toutes les cellules sures.");
                     enCours = false;
                 }
             } catch (Exception e) {
-                System.out.println("Entrée invalide, veuillez entrer des coordonnées valides.");
+                System.out.println("Entree invalide, veuillez entrer des coordonnees valides.");
                 scanner.nextLine(); // Pour nettoyer le buffer
             }
         }
 
         scanner.close();
-        System.out.println("Merci d'avoir joué !");
+        System.out.println("Merci d'avoir joue !");
     }
 
     // Méthode pour gérer un tour de jeu
