@@ -4,7 +4,6 @@
  */
 package demineur_1_peron;
 
-import demineur_1_peron.Cellule;
 
 /**
  *
@@ -65,6 +64,9 @@ public class Demineur_1_peron {
         } else {
             System.out.println("Continuez a jouer !");
         }
+        
+        partie partie1 = new partie(5,5,4) ;
+        partie1.demarrer();
     }
 }
 

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package demineur_1_peron;
 
 import java.util.Scanner;
@@ -10,14 +6,52 @@ public class partie {
     private GrilleDeJeu grille;  // La grille du jeu
     private boolean enCours;     // Indique si la partie est en cours
 
-    // Constructeur
+    // Constructeur par défaut
     public partie(int nbLignes, int nbColonnes, int nbBombes) {
         grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes);
         enCours = true; // La partie commence
     }
 
+    // Méthode pour choisir le niveau
+    private void choisirNiveau() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Choisissez un niveau de difficulté :");
+        System.out.println("1. Débutant (9x9, 10 mines)");
+        System.out.println("2. Intermédiaire (16x16, 40 mines)");
+        System.out.println("3. Expert (30x16, 99 mines)");
+
+        int choix = -1;
+        while (choix < 1 || choix > 3) {
+            try {
+                System.out.print("Votre choix : ");
+                choix = scanner.nextInt();
+                switch (choix) {
+                    case 1:
+                        grille = new GrilleDeJeu(9, 9, 10);
+                        break;
+                    case 2:
+                        grille = new GrilleDeJeu(16, 16, 40);
+                        break;
+                    case 3:
+                        grille = new GrilleDeJeu(30, 16, 99);
+                        break;
+                    default:
+                        System.out.println("Choix invalide. Veuillez entrer 1, 2 ou 3.");
+                }
+            } catch (Exception e) {
+                System.out.println("Entrée invalide, veuillez réessayer.");
+                scanner.nextLine(); // Nettoie le buffer
+            }
+        }
+
+        enCours = true; // La partie commence
+    }
+
     // Méthode pour démarrer la partie
     public void demarrer() {
+        // Appel de la méthode pour choisir le niveau
+        choisirNiveau();
+
         Scanner scanner = new Scanner(System.in);
 
         // Affichage initial de la grille
@@ -76,4 +110,3 @@ public class partie {
         return true; // Le joueur peut continuer
     }
 }
-
