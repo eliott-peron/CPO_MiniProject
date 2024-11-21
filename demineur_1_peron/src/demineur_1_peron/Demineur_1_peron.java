@@ -15,7 +15,10 @@ public class Demineur_1_peron {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // Création d'une première cellule (par défaut : pas de bombe, non dévoilée)
+        
+        
+        
+       /* // Création d'une première cellule (par défaut : pas de bombe, non dévoilée)
         Cellule cellule1 = new Cellule();
         System.out.println("Etat initial de la cellule : " + cellule1.toString()); // Attendu : "?"
 
@@ -43,6 +46,7 @@ public class Demineur_1_peron {
 
         // Affichage final pour valider le comportement des cellules
         System.out.println("\nTests termines !");
+        
 
         GrilleDeJeu grille = new GrilleDeJeu(5, 5, 5);
 
@@ -64,7 +68,11 @@ public class Demineur_1_peron {
         } else {
             System.out.println("Continuez a jouer !");
         }
+        */
         
+       
+       
+       
         partie partie1 = new partie(5,5,4) ;
         partie1.demarrer();
     }
