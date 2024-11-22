@@ -33,7 +33,7 @@ public class partie {
                         grille = new GrilleDeJeu(16, 16, 40);
                         break;
                     case 3:
-                        grille = new GrilleDeJeu(30, 16, 99);
+                        grille = new GrilleDeJeu(16, 30, 99);
                         break;
                     default:
                         System.out.println("Choix invalide. Veuillez entrer 1, 2 ou 3.");
@@ -60,31 +60,48 @@ public class partie {
         System.out.println(grille.toString());
 
         while (enCours) {
-            System.out.println("Entrez les coordonnees de la cellule à reveler (ligne et colonne) :");
+            System.out.println("Choisissez une action :");
+            System.out.println("1. Reveler une cellule");
+            System.out.println("2. Poser/retirer un drapeau");
+            System.out.print("Votre choix : ");
+
             try {
-                // Récupération des coordonnées du joueur
+                int action = scanner.nextInt();
+
+                System.out.println("Entrez les coordonnees de la cellule (ligne et colonne) :");
                 System.out.print("Ligne : ");
                 int ligne = scanner.nextInt();
                 System.out.print("Colonne : ");
                 int colonne = scanner.nextInt();
 
-                // Révélation de la cellule
-                boolean resultat = tourDeJeu(ligne, colonne);
+                if (action == 1) {
+                    // Révéler la cellule
+                    boolean resultat = tourDeJeu(ligne, colonne);
 
-                // Affichage de la grille après le tour
-                System.out.println("\nÉtat actuel de la grille :");
-                System.out.println(grille.toString());
+                    // Affichage de la grille après le tour
+                    System.out.println("\nEtat actuel de la grille :");
+                    System.out.println(grille.toString());
 
-                // Vérification du résultat
-                if (!resultat) {
-                    System.out.println("Vous avez revele une bombe ! Partie terminee.");
-                    enCours = false;
-                } else if (grille.toutesCellulesRevelees()) {
-                    System.out.println("Felicitations ! Vous avez découvert toutes les cellules sures.");
-                    enCours = false;
+                    // Vérification du résultat
+                    if (!resultat) {
+                        System.out.println("Vous avez revele une bombe ! Partie terminee.");
+                        enCours = false;
+                    } else if (grille.toutesCellulesRevelees()) {
+                        System.out.println("Felicitations ! Vous avez découvert toutes les cellules sures.");
+                        enCours = false;
+                    }
+                } else if (action == 2) {
+                    // Poser ou retirer un drapeau
+                    grille.gererDrapeau(ligne, colonne);
+
+                    // Affichage de la grille après l'action
+                    System.out.println("\nEtat actuel de la grille :");
+                    System.out.println(grille.toString());
+                } else {
+                    System.out.println("Action invalide. Veuillez entrer 1 ou 2.");
                 }
             } catch (Exception e) {
-                System.out.println("Entree invalide, veuillez entrer des coordonnees valides.");
+                System.out.println("Entree invalide, veuillez entrer des valeurs valides.");
                 scanner.nextLine(); // Pour nettoyer le buffer
             }
         }
@@ -93,7 +110,7 @@ public class partie {
         System.out.println("Merci d'avoir joue !");
     }
 
-    // Méthode pour gérer un tour de jeu
+    // Méthode pour gérer un tour de jeu (révéler une cellule)
     private boolean tourDeJeu(int ligne, int colonne) {
         try {
             // Révéler la cellule
@@ -104,7 +121,7 @@ public class partie {
                 return false; // Bombe révélée
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Les coordonnées sont hors des limites de la grille !");
+            System.out.println("Les coordonnees sont hors des limites de la grille !");
         }
 
         return true; // Le joueur peut continuer

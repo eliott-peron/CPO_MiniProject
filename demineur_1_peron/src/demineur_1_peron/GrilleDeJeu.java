@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package demineur_1_peron;
 
-/**
- *
- * @author eliot
- */
 import java.util.Random;
 
 public class GrilleDeJeu {
+
     private Cellule[][] matriceCellules; // Grille contenant toutes les cellules
     private int nbLignes;               // Nombre de lignes de la grille
     private int nbColonnes;             // Nombre de colonnes de la grille
@@ -40,10 +33,6 @@ public class GrilleDeJeu {
     public Cellule[][] getMatriceCellules() {
         return matriceCellules;
     }
-    
-    
-    
-    
 
     // Méthode pour initialiser la grille
     private void initialiserGrille() {
@@ -99,8 +88,8 @@ public class GrilleDeJeu {
                 int voisinColonne = colonne + j;
 
                 // Vérifier si la cellule voisine est dans les limites de la grille
-                if (voisinLigne >= 0 && voisinLigne < nbLignes &&
-                    voisinColonne >= 0 && voisinColonne < nbColonnes) {
+                if (voisinLigne >= 0 && voisinLigne < nbLignes
+                        && voisinColonne >= 0 && voisinColonne < nbColonnes) {
                     if (matriceCellules[voisinLigne][voisinColonne].getPresenceBombe()) {
                         count++;
                     }
@@ -111,23 +100,51 @@ public class GrilleDeJeu {
         return count;
     }
 
+    // Méthode pour poser ou retirer un drapeau sur une cellule
+    public void gererDrapeau(int ligne, int colonne) {
+        // Vérification des coordonnées
+        if (ligne < 0 || ligne >= nbLignes || colonne < 0 || colonne >= nbColonnes) {
+            System.out.println("Coordonnees invalides !");
+            return;
+        }
+
+        Cellule cellule = matriceCellules[ligne][colonne];
+        if (cellule.isDevoilee()) {
+            System.out.println("Impossible de poser un drapeau sur une cellule devoilee !");
+        } else {
+            // Basculer l'état du drapeau
+            cellule.setDrapeau(!cellule.getDrapeau());
+            System.out.println("Drapeau " + (cellule.getDrapeau() ? "pose" : "retire") + " en (" + ligne + ", " + colonne + ").");
+        }
+    }
+
     // Méthode pour révéler une cellule
     public void revelerCellule(int ligne, int colonne) {
         // Vérifier si les coordonnées sont valides ou si la cellule est déjà dévoilée
-        if (ligne < 0 || ligne >= nbLignes || colonne < 0 || colonne >= nbColonnes ||
-            matriceCellules[ligne][colonne].toString().equals(" ")) {
+        if (ligne < 0 || ligne >= nbLignes || colonne < 0 || colonne >= nbColonnes) {
+            System.out.println("Coordonnees invalides !");
+            return;
+        }
+
+        Cellule cellule = matriceCellules[ligne][colonne];
+        if (cellule.isDevoilee()) {
+            System.out.println("Cellule deja devoilee !");
+            return;
+        }
+
+        if (cellule.getDrapeau()) {
+            System.out.println("Impossible de reveler une cellule avec un drapeau !");
             return;
         }
 
         // Révéler la cellule
-        matriceCellules[ligne][colonne].revelerCellule();
+        cellule.revelerCellule();
 
         // Si la cellule contient une bombe, le joueur a perdu
-        if (matriceCellules[ligne][colonne].getPresenceBombe()) {
+        if (cellule.getPresenceBombe()) {
             System.out.println("Bombe revelee ! Vous avez perdu.");
-        }
-        // Si la cellule est vide (0 bombes adjacentes), révéler les voisins
-        else if (matriceCellules[ligne][colonne].getNbBombesAdjacentes() == 0) {
+        } else if (cellule.getNbBombesAdjacentes() == 0) {
+            // Si la cellule est vide, révéler ses voisins
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
                     revelerCellule(ligne + i, colonne + j);
@@ -140,7 +157,8 @@ public class GrilleDeJeu {
     public boolean toutesCellulesRevelees() {
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
-                if (!matriceCellules[i][j].getPresenceBombe() && matriceCellules[i][j].toString().equals("?")) {
+                Cellule cellule = matriceCellules[i][j];
+                if (!cellule.getPresenceBombe() && !cellule.isDevoilee()) {
                     return false;
                 }
             }
@@ -150,39 +168,23 @@ public class GrilleDeJeu {
 
     // Méthode pour afficher la grille (représentation textuelle)
     @Override
-public String toString() {
-    StringBuilder builder = new StringBuilder();
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
 
-    // Calculer le nombre maximal de chiffres pour les colonnes et les lignes
-    int maxColonnes = Integer.toString(nbColonnes - 1).length(); // Longueur du plus grand numéro de colonne
-    int maxLignes = Integer.toString(nbLignes - 1).length(); // Longueur du plus grand numéro de ligne
+        // Afficher les lignes de la grille avec délimitations
+        for (int i = 0; i < nbLignes; i++) {
+            for (int j = 0; j < nbColonnes; j++) {
+                builder.append("| " + matriceCellules[i][j].toString() + " ");
+            }
+            builder.append("|\n");
 
-    // Afficher la numérotation des colonnes
-    builder.append("   "); // Espace pour la ligne de numérotation des colonnes
-    for (int j = 0; j < nbColonnes; j++) {
-        builder.append(String.format("% " + maxColonnes + "d ", j)); // Formatage pour aligner les numéros des colonnes
-    }
-    builder.append("\n");
-
-    // Afficher les lignes de la grille avec délimitations
-    for (int i = 0; i < nbLignes; i++) {
-        // Numérotation des lignes avec formatage pour aligner correctement
-        builder.append(String.format("%" + (maxLignes + 1) + "d", i)); // Formatage pour aligner les numéros de ligne
-
-        for (int j = 0; j < nbColonnes; j++) {
-            // Affichage des cellules avec une largeur fixe pour un alignement correct
-            builder.append("| " + matriceCellules[i][j].toString() + " ");
+            // Ajouter une ligne de délimitation après chaque ligne de la grille
+            for (int j = 0; j < nbColonnes; j++) {
+                builder.append("----");
+            }
+            builder.append("\n");
         }
-        builder.append("|\n");
 
-        // Ajouter une ligne de délimitation après chaque ligne de la grille
-        builder.append("   ");
-        for (int j = 0; j < nbColonnes; j++) {
-            builder.append("----"); // Délimitation de chaque case
-        }
-        builder.append("\n");
+        return builder.toString();
     }
-
-    return builder.toString();
-}
 }
