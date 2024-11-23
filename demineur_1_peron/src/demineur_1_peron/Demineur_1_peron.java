@@ -14,6 +14,11 @@ public class Demineur_1_peron {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+       
+        
+        
+        
 
         /* // Création d'une première cellule (par défaut : pas de bombe, non dévoilée)
         Cellule cellule1 = new Cellule();
