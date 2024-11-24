@@ -48,7 +48,7 @@ public class Demineur_1_peron {
 
         // Affichage final pour valider le comportement des cellules
         System.out.println("\nTests termines !");
-        
+       
 
         GrilleDeJeu grille = new GrilleDeJeu(5, 5, 5);
 
