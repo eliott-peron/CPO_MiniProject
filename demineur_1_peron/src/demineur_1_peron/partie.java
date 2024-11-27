@@ -19,6 +19,7 @@ public class partie {
         System.out.println("1. Debutant (9x9, 10 mines)");
         System.out.println("2. Intermediaire (16x16, 40 mines)");
         System.out.println("3. Expert (30x16, 99 mines)");
+        System.out.println("4. Personalisation (choix de la grille et des mines)");
 
         int choix = -1;
         while (choix < 1 || choix > 3) {
@@ -34,6 +35,13 @@ public class partie {
                         break;
                     case 3:
                         grille = new GrilleDeJeu(16, 30, 99);
+                        break;
+                    case 4:
+                        System.out.println("choisiser le nombre de colone le nombre de ligne et les nombre de bombes");
+                        int a = scanner.nextInt();
+                        int b = scanner.nextInt();
+                        int c = scanner.nextInt();
+                        grille = new GrilleDeJeu(a, b, c);
                         break;
                     default:
                         System.out.println("Choix invalide. Veuillez entrer 1, 2 ou 3.");
