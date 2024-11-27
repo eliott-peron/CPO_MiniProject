@@ -22,7 +22,7 @@ public class partie {
         System.out.println("4. Personalisation (choix de la grille et des mines)");
 
         int choix = -1;
-        while (choix < 1 || choix > 3) {
+        while (choix < 1 || choix > 4) {
             try {
                 System.out.print("Votre choix : ");
                 choix = scanner.nextInt();
@@ -38,8 +38,11 @@ public class partie {
                         break;
                     case 4:
                         System.out.println("choisiser le nombre de colone le nombre de ligne et les nombre de bombes");
+                        System.out.print("Choisissez le nombre de lignes: ");
                         int a = scanner.nextInt();
+                        System.out.print("Choisissez le nombre de colonnes: ");
                         int b = scanner.nextInt();
+                        System.out.print("Choisissez le nombre de bombes: ");
                         int c = scanner.nextInt();
                         grille = new GrilleDeJeu(a, b, c);
                         break;
