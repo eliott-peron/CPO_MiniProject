@@ -4,18 +4,40 @@
  */
 package demineur_1_peron;
 
+import javax.swing.JButton;
+import java.awt.GridLayout;
+
 /**
  *
  * @author eliot
  */
 public class FenetrePrincipale extends javax.swing.JFrame {
 
+    GrilleDeJeu grille;
+    int nbCoups;
+
     /**
      * Creates new form FenetrePrincipale
      */
     public FenetrePrincipale() {
         initComponents();
+        int nbLignes = 5;
+        int nbColonnes = 5;
+        int nbBombes = 3;
+        this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes);
+
+        PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
+
+        for (int i = 0; i < nbLignes; i++) {
+            for (int j = 0; j < nbColonnes; j++) {
+                JButton bouton_cellule = new JButton(); // création d'un bouton
+                PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+            }
+        }
+
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,18 +48,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        PanneauGrille = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PanneauGrille.setBackground(new java.awt.Color(204, 255, 204));
+        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 400, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -78,5 +95,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanneauGrille;
     // End of variables declaration//GEN-END:variables
 }
