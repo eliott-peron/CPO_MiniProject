@@ -30,7 +30,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
-                JButton bouton_cellule = new JButton(); // création d'un bouton
+                Callulegraphique bouton_cellule = new Callulegraphique( grille.matriceCellules[i][j], 36,36);
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
         }

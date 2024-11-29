@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class GrilleDeJeu {
 
-    private Cellule[][] matriceCellules; // Grille contenant toutes les cellules
+    Cellule[][] matriceCellules; // Grille contenant toutes les cellules
     private int nbLignes;               // Nombre de lignes de la grille
     private int nbColonnes;             // Nombre de colonnes de la grille
     private int nbBombes;               // Nombre total de bombes dans la grille
