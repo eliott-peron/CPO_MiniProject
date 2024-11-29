@@ -38,7 +38,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     public void initialiserPartie() {
-        
+        grille.placerBombesAleatoirement();
     }
 
     /**
