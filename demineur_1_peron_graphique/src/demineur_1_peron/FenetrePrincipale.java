@@ -21,8 +21,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      */
     public FenetrePrincipale() {
         initComponents();
-        int nbLignes = 5;
-        int nbColonnes = 5;
+        int nbLignes = 10;
+        int nbColonnes = 10;
         int nbBombes = 3;
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes);
 
@@ -37,7 +37,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     }
 
-    
+    public void initialiserPartie() {
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
