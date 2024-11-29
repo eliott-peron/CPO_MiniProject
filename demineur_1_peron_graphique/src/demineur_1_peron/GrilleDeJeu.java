@@ -49,7 +49,7 @@ public class GrilleDeJeu {
     }
 
     // Méthode pour placer les bombes aléatoirement
-    private void placerBombesAleatoirement() {
+    public void placerBombesAleatoirement() {
         Random random = new Random();
         int bombesPlacees = 0;
 
@@ -76,6 +76,8 @@ public class GrilleDeJeu {
             }
         }
     }
+    
+    
 
     // Méthode pour compter les bombes adjacentes à une cellule donnée
     private int compterBombesAdjacentes(int ligne, int colonne) {
