@@ -71,8 +71,10 @@ public class Demineur_1_peron {
             System.out.println("Continuez a jouer !");
         }
          */
+
         partie partie1 = new partie(5, 5, 4);
         partie1.demarrer();
+        
     }
 
 }

@@ -47,7 +47,7 @@ public class partie {
                         grille = new GrilleDeJeu(a, b, c);
                         break;
                     default:
-                        System.out.println("Choix invalide. Veuillez entrer 1, 2 ou 3.");
+                        System.out.println("Choix invalide. Veuillez entrer 1, 2,3 ou 4");
                 }
             } catch (Exception e) {
                 System.out.println("Entree invalide, veuillez reessayer.");
