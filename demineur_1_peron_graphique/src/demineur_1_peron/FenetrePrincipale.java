@@ -30,7 +30,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
-                Callulegraphique bouton_cellule = new Callulegraphique( grille.matriceCellules[i][j], 36,36);
+                Callulegraphique bouton_cellule = new Callulegraphique(grille.matriceCellules[i][j], 36, 36);
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
         }
@@ -39,6 +39,15 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     public void initialiserPartie() {
         grille.placerBombesAleatoirement();
+    }
+
+    public void mettreAJourGrille() {
+        for (int i = 0; i < grille.getNbLignes(); i++) {
+            for (int j = 0; j < grille.getNbColonnes(); j++) {
+                Callulegraphique bouton = (Callulegraphique) PanneauGrille.getComponent(i * grille.getNbColonnes() + j);
+                bouton.mettreAJour();
+            }
+        }
     }
 
     /**
