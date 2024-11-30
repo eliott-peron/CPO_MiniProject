@@ -4,30 +4,69 @@
  */
 package demineur_1_peron;
 
-import java.awt.Graphics;
 import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-/**
- *
- * @author leoboree
- */
 public class Callulegraphique extends JButton {
- int largeur; // largeur en pixel de la cellule
- int hauteur; // hauteur en pixel de la cellule
- Cellule celluleDMR;
- // constructeur (appelé depuis FenetrePrincipale)
- public Callulegraphique(Cellule celluleDMR, int l,int h) {
- this.largeur = l;
- this.hauteur = h;
- this.celluleDMR = celluleDMR;
- }
- // Methode gérant le dessin de la cellule
- @Override
- protected void paintComponent(Graphics g) {
- super.paintComponent(g);
- this.setText(celluleDMR.toString());
- }
+
+    private Cellule cellule; // Modèle associé
+    private int ligne;
+    private int colonne;
+
+    public Callulegraphique(Cellule cellule, int ligne, int colonne) {
+        this.cellule = cellule;
+        this.ligne = ligne;
+        this.colonne = colonne;
+
+        // Initialisation graphique
+        setText("?"); // Indique que la cellule est cachée
+        setFocusPainted(false);
+
+        // Ajout d'un écouteur pour gérer les clics
+        addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Action à définir : révéler ou poser un drapeau
+                revelerOuDrapeau();
+            }
+        });
+    }
+
+    // Méthode pour révéler une cellule ou poser un drapeau
+    private void revelerOuDrapeau() {
+        if (!cellule.isDevoilee()) {
+            if (cellule.getDrapeau()) {
+                cellule.setDrapeau(false);
+                setText("?");
+            } else {
+                if (cellule.getPresenceBombe()) {
+                    setText("💣"); // Bombe découverte
+                    setEnabled(false); // Désactiver après révélation
+                } else {
+                    setText(String.valueOf(cellule.getNbBombesAdjacentes()));
+                    cellule.revelerCellule();
+                    setEnabled(false); // Désactiver après révélation
+                }
+            }
+        }
+    }
+
+    // Mise à jour graphique pour correspondre au modèle
+    public void mettreAJour() {
+        if (cellule.isDevoilee()) {
+            if (cellule.getPresenceBombe()) {
+                setText("💣");
+            } else {
+                int nbBombesAdjacentes = cellule.getNbBombesAdjacentes();
+                setText(nbBombesAdjacentes > 0 ? String.valueOf(nbBombesAdjacentes) : "");
+            }
+            setEnabled(false);
+        } else if (cellule.getDrapeau()) {
+            setText("🚩");
+        } else {
+            setText("?");
+        }
+    }
 }
-    
-    
 
