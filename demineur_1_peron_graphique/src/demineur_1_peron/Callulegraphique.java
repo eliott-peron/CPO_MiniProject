@@ -20,7 +20,7 @@ public class Callulegraphique extends JButton {
         this.colonne = colonne;
 
         // Initialisation graphique
-        setText("?"); // Indique que la cellule est cachée
+        setText(" "); // Indique que la cellule est cachée
         setFocusPainted(false);
 
         // Ajout d'un écouteur pour gérer les clics
@@ -38,7 +38,7 @@ public class Callulegraphique extends JButton {
         if (!cellule.isDevoilee()) {
             if (cellule.getDrapeau()) {
                 cellule.setDrapeau(false);
-                setText("?");
+                setText(" ");
             } else {
                 if (cellule.getPresenceBombe()) {
                     setText("💣"); // Bombe découverte
@@ -50,6 +50,7 @@ public class Callulegraphique extends JButton {
                 }
             }
         }
+
     }
 
     // Mise à jour graphique pour correspondre au modèle
@@ -65,8 +66,9 @@ public class Callulegraphique extends JButton {
         } else if (cellule.getDrapeau()) {
             setText("🚩");
         } else {
-            setText("?");
+            setText(" ");
         }
-    }
-}
 
+    }
+
+}

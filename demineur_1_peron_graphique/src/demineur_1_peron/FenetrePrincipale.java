@@ -50,6 +50,19 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         }
     }
 
+    public Callulegraphique getCelluleGraphique(int ligne, int colonne) {
+        return (Callulegraphique) PanneauGrille.getComponent(ligne * grille.getNbColonnes() + colonne);
+    }
+
+    public int getNbLignes() {
+        return grille.getNbLignes();
+    }
+
+    public int getNbColonnes() {
+        return grille.getNbColonnes();
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
