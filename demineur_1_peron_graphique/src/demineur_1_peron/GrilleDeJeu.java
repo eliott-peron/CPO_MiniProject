@@ -20,6 +20,7 @@ public class GrilleDeJeu {
 
     public int getNbLignes() {
         return nbLignes;
+        
     }
 
     public int getNbColonnes() {
