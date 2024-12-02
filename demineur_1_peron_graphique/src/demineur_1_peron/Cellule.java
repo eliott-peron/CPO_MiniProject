@@ -24,6 +24,7 @@ public class Cellule {
         return presenceBombe;
     }
 
+    
     // Mutateur pour placer une bombe
     public void placerBombe() {
         this.presenceBombe = true;

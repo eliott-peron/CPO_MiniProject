@@ -24,18 +24,19 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         initComponents();
         int nbLignes = 10;
         int nbColonnes = 10;
-        int nbBombes = 3;
+        int nbBombes = 10;
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes);
 
+        // Fixez les dimensions des cellules
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
+        PanneauGrille.setPreferredSize(new java.awt.Dimension(400, 400)); // ou ajustez selon la taille
 
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
-                Callulegraphique bouton_cellule = new Callulegraphique(grille.matriceCellules[i][j], 36, 36);
-                PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+                Callulegraphique bouton_cellule = new Callulegraphique(grille.matriceCellules[i][j], i, j);
+                PanneauGrille.add(bouton_cellule);
             }
         }
-
     }
 
     public void initialiserPartie() {
@@ -50,6 +51,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             }
         }
     }
+    
+    
 
     public Callulegraphique getCelluleGraphique(int ligne, int colonne) {
         return (Callulegraphique) PanneauGrille.getComponent(ligne * grille.getNbColonnes() + colonne);
@@ -62,7 +65,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     public int getNbColonnes() {
         return grille.getNbColonnes();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

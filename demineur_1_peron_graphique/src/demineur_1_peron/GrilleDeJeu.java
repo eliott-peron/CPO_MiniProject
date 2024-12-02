@@ -189,4 +189,8 @@ public class GrilleDeJeu {
 
         return builder.toString();
     }
+
+    Cellule getCellule(int voisinLigne, int voisinColonne) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
