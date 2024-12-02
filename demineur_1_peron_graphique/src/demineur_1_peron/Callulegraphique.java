@@ -57,7 +57,7 @@ public class Callulegraphique extends JButton {
     public void mettreAJour() {
         if (cellule.isDevoilee()) {
             if (cellule.getPresenceBombe()) {
-                setText("💣");
+                setText("B");
             } else {
                 int nbBombesAdjacentes = cellule.getNbBombesAdjacentes();
                 setText(nbBombesAdjacentes > 0 ? String.valueOf(nbBombesAdjacentes) : "");
@@ -70,5 +70,6 @@ public class Callulegraphique extends JButton {
         }
 
     }
-
+    
+    
 }
