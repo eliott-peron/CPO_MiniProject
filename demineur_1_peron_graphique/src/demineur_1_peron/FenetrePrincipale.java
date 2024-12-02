@@ -29,6 +29,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombe);
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
 
+        initialiserPartie();
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 CelluleGraphique bouton_cellule = new CelluleGraphique( grille.matriceCellules[i][j], 36,36);
