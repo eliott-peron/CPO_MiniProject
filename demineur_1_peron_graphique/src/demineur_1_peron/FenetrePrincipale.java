@@ -15,55 +15,32 @@ import java.awt.GridLayout;
 public class FenetrePrincipale extends javax.swing.JFrame {
 
     GrilleDeJeu grille;
-    int nbCoups;
-
+      
     /**
      * Creates new form FenetrePrincipale
      */
     public FenetrePrincipale() {
-        initComponents();
-        int nbLignes = 10;
-        int nbColonnes = 10;
-        int nbBombes = 10;
-        this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes);
 
-        // Fixez les dimensions des cellules
+        initComponents();
+        int nbLignes = 5;
+        int nbColonnes = 5;
+        int nbBombe = 5;
+        
+        this.grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombe);
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
-        PanneauGrille.setPreferredSize(new java.awt.Dimension(400, 400)); // ou ajustez selon la taille
 
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
-                Callulegraphique bouton_cellule = new Callulegraphique(grille.matriceCellules[i][j], i, j);
-                PanneauGrille.add(bouton_cellule);
+                CelluleGraphique bouton_cellule = new CelluleGraphique( grille.matriceCellules[i][j], 36,36);
+                PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
         }
+
     }
 
     public void initialiserPartie() {
+      
         grille.placerBombesAleatoirement();
-    }
-
-    public void mettreAJourGrille() {
-        for (int i = 0; i < grille.getNbLignes(); i++) {
-            for (int j = 0; j < grille.getNbColonnes(); j++) {
-                Callulegraphique bouton = (Callulegraphique) PanneauGrille.getComponent(i * grille.getNbColonnes() + j);
-                bouton.mettreAJour();
-            }
-        }
-    }
-    
-    
-
-    public Callulegraphique getCelluleGraphique(int ligne, int colonne) {
-        return (Callulegraphique) PanneauGrille.getComponent(ligne * grille.getNbColonnes() + colonne);
-    }
-
-    public int getNbLignes() {
-        return grille.getNbLignes();
-    }
-
-    public int getNbColonnes() {
-        return grille.getNbColonnes();
     }
 
     /**
@@ -76,16 +53,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void initComponents() {
 
         PanneauGrille = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanneauGrille.setBackground(new java.awt.Color(204, 255, 204));
+        PanneauGrille.setBackground(new java.awt.Color(255, 0, 0));
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 400, 400));
-
-        jButton1.setText("jButton1");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -127,6 +100,5 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanneauGrille;
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
