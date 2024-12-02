@@ -77,7 +77,7 @@ public class Cellule {
                 return " "; // Cellule vide
             }
         } else {
-            return "?"; // Cellule non dévoilée
+            return "Anouk"; // Cellule non dévoilée
         }
     }
 
