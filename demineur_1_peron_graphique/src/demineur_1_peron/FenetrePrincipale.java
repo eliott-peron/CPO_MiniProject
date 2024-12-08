@@ -74,9 +74,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanneauGrille.setBackground(new java.awt.Color(255, 255, 0));
+        PanneauGrille.setBackground(new java.awt.Color(51, 0, 255));
         PanneauGrille.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 700, 700));
+        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 700, 700));
 
         Panneau_info_joueur.setBackground(new java.awt.Color(204, 255, 204));
         Panneau_info_joueur.setForeground(new java.awt.Color(153, 153, 153));
@@ -120,7 +120,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(Panneau_info_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 250, 130));
 
-        setBounds(0, 0, 930, 841);
+        setBounds(0, 0, 980, 839);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonNiveau1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNiveau1ActionPerformed
