@@ -77,10 +77,16 @@ public class Cellule {
                 return " "; // Cellule vide
             }
         } else {
-            return "Anouk"; // Cellule non dévoilée
+            return "?"; // Cellule non dévoilée
         }
     }
-
+    
+        
+    
+    
+    
+    
+    
     /**
      * Retourne le code couleur ANSI selon le nombre.
      *

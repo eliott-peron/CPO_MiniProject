@@ -30,6 +30,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
 
         initialiserPartie();
+        
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 CelluleGraphique bouton_cellule = new CelluleGraphique( grille.matriceCellules[i][j], 36,36);
@@ -54,14 +55,26 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void initComponents() {
 
         PanneauGrille = new javax.swing.JPanel();
+        Panneau_info_joueur = new javax.swing.JPanel();
+        Panneau_creation_partie = new javax.swing.JPanel();
+        Panneau_info_pertie = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanneauGrille.setBackground(new java.awt.Color(255, 255, 0));
-        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 400, 400));
+        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 450, 490));
 
-        pack();
+        Panneau_info_joueur.setBackground(new java.awt.Color(204, 255, 204));
+        getContentPane().add(Panneau_info_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 250, 130));
+
+        Panneau_creation_partie.setBackground(new java.awt.Color(204, 255, 204));
+        getContentPane().add(Panneau_creation_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 250, 130));
+
+        Panneau_info_pertie.setBackground(new java.awt.Color(204, 255, 204));
+        getContentPane().add(Panneau_info_pertie, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 250, 130));
+
+        setBounds(0, 0, 948, 717);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -101,5 +114,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanneauGrille;
+    private javax.swing.JPanel Panneau_creation_partie;
+    private javax.swing.JPanel Panneau_info_joueur;
+    private javax.swing.JPanel Panneau_info_pertie;
     // End of variables declaration//GEN-END:variables
 }
