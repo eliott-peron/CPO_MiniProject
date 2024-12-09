@@ -26,6 +26,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Rejouer.setVisible(false);
 
         initialiserPartieParDefaut();
+        
 
     }
 
