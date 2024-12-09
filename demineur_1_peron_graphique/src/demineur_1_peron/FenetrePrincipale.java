@@ -45,7 +45,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             }
         }
 
-        grille.placerBombesAleatoirement();
         PanneauGrille.revalidate(); // Actualise l'affichage
         PanneauGrille.repaint();
     }
