@@ -1,140 +1,126 @@
 package demineur_1_peron;
 
-import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class partie {
-    private GrilleDeJeu grille;  // La grille du jeu
-    private boolean enCours;     // Indique si la partie est en cours
+    private GrilleDeJeu grille;
+    private boolean enCours;
+    private JFrame frame; // Fenêtre principale
+    private JButton[][] boutons; // Boutons représentant la grille
 
-    // Constructeur par défaut
     public partie(int nbLignes, int nbColonnes, int nbBombes) {
         grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombes);
-        enCours = true; // La partie commence
+        enCours = true;
+        initInterface(nbLignes, nbColonnes);
     }
 
-    // Méthode pour choisir le niveau
-    private void choisirNiveau() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Choisissez un niveau de difficulte :");
-        System.out.println("1. Debutant (9x9, 10 mines)");
-        System.out.println("2. Intermediaire (16x16, 40 mines)");
-        System.out.println("3. Expert (30x16, 99 mines)");
-        System.out.println("4. Personalisation (choix de la grille et des mines)");
+    private void initInterface(int nbLignes, int nbColonnes) {
+        frame = new JFrame("Démineur");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new GridLayout(nbLignes, nbColonnes));
 
-        int choix = -1;
-        while (choix < 1 || choix > 4) {
-            try {
-                System.out.print("Votre choix : ");
-                choix = scanner.nextInt();
-                switch (choix) {
-                    case 1:
-                        grille = new GrilleDeJeu(9, 9, 10);
-                        break;
-                    case 2:
-                        grille = new GrilleDeJeu(16, 16, 40);
-                        break;
-                    case 3:
-                        grille = new GrilleDeJeu(16, 30, 99);
-                        break;
-                    case 4:
-                        System.out.println("choisiser le nombre de colone le nombre de ligne et les nombre de bombes");
-                        System.out.print("Choisissez le nombre de lignes: ");
-                        int a = scanner.nextInt();
-                        System.out.print("Choisissez le nombre de colonnes: ");
-                        int b = scanner.nextInt();
-                        System.out.print("Choisissez le nombre de bombes: ");
-                        int c = scanner.nextInt();
-                        grille = new GrilleDeJeu(a, b, c);
-                        break;
-                    default:
-                        System.out.println("Choix invalide. Veuillez entrer 1, 2,3 ou 4");
-                }
-            } catch (Exception e) {
-                System.out.println("Entree invalide, veuillez reessayer.");
-                scanner.nextLine(); // Nettoie le buffer
-            }
-        }
+        boutons = new JButton[nbLignes][nbColonnes];
 
-        enCours = true; // La partie commence
-    }
+        for (int i = 0; i < nbLignes; i++) {
+            for (int j = 0; j < nbColonnes; j++) {
+                JButton bouton = new JButton("?");
+                boutons[i][j] = bouton;
 
-    // Méthode pour démarrer la partie
-    public void demarrer() {
-        // Appel de la méthode pour choisir le niveau
-        choisirNiveau();
+                // Ajouter un ActionListener pour chaque bouton
+                int finalI = i;
+                int finalJ = j;
 
-        Scanner scanner = new Scanner(System.in);
-
-        // Affichage initial de la grille
-        System.out.println("Bienvenue dans le jeu Demineur !");
-        System.out.println("Voici la grille de jeu :");
-        System.out.println(grille.toString());
-
-        while (enCours) {
-            System.out.println("Choisissez une action :");
-            System.out.println("1. Reveler une cellule");
-            System.out.println("2. Poser/retirer un drapeau");
-            System.out.print("Votre choix : ");
-
-            try {
-                int action = scanner.nextInt();
-
-                System.out.println("Entrez les coordonnees de la cellule (ligne et colonne) :");
-                System.out.print("Ligne : ");
-                int ligne = scanner.nextInt();
-                System.out.print("Colonne : ");
-                int colonne = scanner.nextInt();
-
-                if (action == 1) {
-                    // Révéler la cellule
-                    boolean resultat = tourDeJeu(ligne, colonne);
-
-                    // Affichage de la grille après le tour
-                    System.out.println("\nEtat actuel de la grille :");
-                    System.out.println(grille.toString());
-
-                    // Vérification du résultat
-                    if (!resultat) {
-                        System.out.println("Vous avez revele une bombe ! Partie terminee.");
-                        enCours = false;
-                    } else if (grille.toutesCellulesRevelees()) {
-                        System.out.println("Felicitations ! Vous avez découvert toutes les cellules sures.");
-                        enCours = false;
+                bouton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        gererClic(finalI, finalJ);
                     }
-                } else if (action == 2) {
-                    // Poser ou retirer un drapeau
-                    grille.gererDrapeau(ligne, colonne);
+                });
 
-                    // Affichage de la grille après l'action
-                    System.out.println("\nEtat actuel de la grille :");
-                    System.out.println(grille.toString());
-                } else {
-                    System.out.println("Action invalide. Veuillez entrer 1 ou 2.");
-                }
-            } catch (Exception e) {
-                System.out.println("Entree invalide, veuillez entrer des valeurs valides.");
-                scanner.nextLine(); // Pour nettoyer le buffer
+                frame.add(bouton);
             }
         }
 
-        scanner.close();
-        System.out.println("Merci d'avoir joue !");
+        frame.pack();
+        frame.setVisible(true);
     }
 
-    // Méthode pour gérer un tour de jeu (révéler une cellule)
-    private boolean tourDeJeu(int ligne, int colonne) {
-        try {
-            // Révéler la cellule
-            grille.revelerCellule(ligne, colonne);
+    // Cette méthode est utilisée pour démarrer la partie
+    public void demarrer() {
+        // Vous pouvez initialiser ou réinitialiser des éléments si nécessaire
+        enCours = true;
+        grille = new GrilleDeJeu(grille.getMatriceCellules().length, grille.getMatriceCellules()[0].length, 4); // Exemple avec 4 bombes
+        System.out.println("La partie a commencé !");
+    }
 
-            // Si la cellule contient une bombe, le joueur perd
-            if (grille.getMatriceCellules()[ligne][colonne].getPresenceBombe()) {
-                return false; // Bombe révélée
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Les coordonnees sont hors des limites de la grille !");
+    private void gererClic(int ligne, int colonne) {
+        if (!enCours) {
+            return;
         }
 
-        return true; // Le joueur peut continuer
+        Cellule cellule = grille.getMatriceCellules()[ligne][colonne];
+
+        if (cellule.isDevoilee()) {
+            return; // Ne rien faire si la cellule est déjà dévoilée
+        }
+
+        cellule.revelerCellule(); // Révèle la cellule
+
+        if (cellule.getPresenceBombe()) {
+            // Si c'est une bombe, afficher "B" et terminer la partie
+            boutons[ligne][colonne].setText("B");
+            boutons[ligne][colonne].setEnabled(false);
+            JOptionPane.showMessageDialog(frame, "Vous avez cliqué sur une bombe ! Partie terminée.");
+            enCours = false;
+            finDePartie();
+        } else {
+            // Afficher le nombre de bombes adjacentes ou vider les cases adjacentes si vide
+            int nbBombesAdjacentes = cellule.getNbBombesAdjacentes();
+            if (nbBombesAdjacentes > 0) {
+                boutons[ligne][colonne].setText(String.valueOf(nbBombesAdjacentes));
+            } else {
+                boutons[ligne][colonne].setText(" ");
+                revelerVoisins(ligne, colonne);
+            }
+            boutons[ligne][colonne].setEnabled(false);
+        }
+
+        if (grille.toutesCellulesRevelees()) {
+            JOptionPane.showMessageDialog(frame, "Félicitations ! Vous avez gagné !");
+            enCours = false;
+            finDePartie();
+        }
+    }
+
+    private void revelerVoisins(int ligne, int colonne) {
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                int voisinLigne = ligne + i;
+                int voisinColonne = colonne + j;
+
+                if (voisinLigne >= 0 && voisinLigne < grille.getMatriceCellules().length &&
+                        voisinColonne >= 0 && voisinColonne < grille.getMatriceCellules()[0].length) {
+                    Cellule voisin = grille.getMatriceCellules()[voisinLigne][voisinColonne];
+                    if (!voisin.isDevoilee() && !voisin.getPresenceBombe()) {
+                        gererClic(voisinLigne, voisinColonne); // Révéler de manière récursive
+                    }
+                }
+            }
+        }
+    }
+
+    private void finDePartie() {
+        for (int i = 0; i < grille.getMatriceCellules().length; i++) {
+            for (int j = 0; j < grille.getMatriceCellules()[0].length; j++) {
+                Cellule cellule = grille.getMatriceCellules()[i][j];
+                if (cellule.getPresenceBombe()) {
+                    boutons[i][j].setText("B");
+                }
+                boutons[i][j].setEnabled(false);
+            }
+        }
     }
 }
