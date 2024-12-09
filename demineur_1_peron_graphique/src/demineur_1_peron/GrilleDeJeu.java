@@ -1,7 +1,7 @@
 package demineur_1_peron;
 
 public class GrilleDeJeu {
-    private Cellule[][] matriceCellules;
+    public Cellule[][] matriceCellules;
 
     // Constructeur de la grille
     public GrilleDeJeu(int nbLignes, int nbColonnes, int nbBombes) {

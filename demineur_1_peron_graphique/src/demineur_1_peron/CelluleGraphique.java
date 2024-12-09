@@ -15,20 +15,7 @@ public class CelluleGraphique extends JButton {
         setEnabled(true); // La cellule est cliquable
     }
 
-    public void reveler() {
-        this.revelee = true;
-        if (cellule.getPresenceBombe()) {
-            setText("B");
-        } else {
-            int bombesAdjacentes = cellule.getNbBombesAdjacentes();
-            if (bombesAdjacentes > 0) {
-                setText(String.valueOf(bombesAdjacentes));
-            } else {
-                setText(""); // Case vide
-            }
-        }
-        setEnabled(false); // Désactiver la cellule après qu'elle ait été cliquée
-    }
+   
 
     public boolean isRevelee() {
         return revelee;
