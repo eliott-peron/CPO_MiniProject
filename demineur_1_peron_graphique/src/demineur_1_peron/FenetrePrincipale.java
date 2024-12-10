@@ -27,6 +27,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setVisible(false);
         Rejouer.setVisible(false);
         information.setVisible(false);
+        
 
     }
 
@@ -49,14 +50,45 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.revalidate(); // Actualise l'affichage
         PanneauGrille.repaint();
     }
-
-    private void verifierFinDePartie() {
-        if (grille.toutesCellulesRevelees()) {
-            System.out.println("Félicitations, vous avez gagné !");
-            // Optionnel : Afficher une boîte de dialogue
-            javax.swing.JOptionPane.showMessageDialog(this, "Vous avez gagné !");
+    
+    
+    public void terminerPartie(boolean victoire) {
+    // Désactiver toutes les cellules
+    for (int i = 0; i < grille.matriceCellules.length; i++) {
+        for (int j = 0; j < grille.matriceCellules[i].length; j++) {
+            CelluleGraphique bouton_cellule = (CelluleGraphique) PanneauGrille.getComponent(i * grille.matriceCellules[i].length + j);
+            bouton_cellule.setEnabled(false);
+            
         }
     }
+
+    // Afficher un message de fin
+    String message = victoire ? "Félicitations ! Vous avez gagné !" : "Vous avez cliqué sur une bombe ! Partie terminée.";
+    javax.swing.JOptionPane.showMessageDialog(this, message, "Fin de partie", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+    // Activer le bouton rejouer
+    Rejouer.setVisible(true);
+}
+
+    
+    public void verifierVictoire() {
+    for (int i = 0; i < grille.matriceCellules.length; i++) {
+        for (int j = 0; j < grille.matriceCellules[i].length; j++) {
+            Cellule cellule = grille.matriceCellules[i][j];
+            if (!cellule.getPresenceBombe() && !cellule.isDevoilee()) {
+                return; // Il reste des cases à découvrir
+            }
+        }
+    }
+
+    // Si toutes les cases non-bombes sont révélées, la partie est gagnée
+    terminerPartie(true);
+}
+
+
+   
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,9 +123,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 700, 700));
 
-        Panneau_info_joueur.setBackground(new java.awt.Color(204, 255, 204));
+        Panneau_info_joueur.setBackground(new java.awt.Color(51, 51, 255));
         Panneau_info_joueur.setForeground(new java.awt.Color(153, 153, 153));
-        Panneau_info_joueur.setLayout(new java.awt.GridLayout(1, 0));
+        Panneau_info_joueur.setLayout(new java.awt.GridLayout());
 
         jButtonNiveau1.setText("niveau 1");
         jButtonNiveau1.addActionListener(new java.awt.event.ActionListener() {
@@ -154,6 +186,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         jLabel3.setText("clique droit = drapeau  ⚑");
         information.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
+        Rejouer.setBackground(new java.awt.Color(102, 255, 255));
         Rejouer.setText("Rejouer");
         Rejouer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,11 +236,20 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNiveau3ActionPerformed
 
     private void RejouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RejouerActionPerformed
-        // TODO add your handling code here:
-        initialiserPartieParDefaut(); // Réinitialise la partie
-        Panneau_info_joueur.setVisible(true); // Rend le panneau visible
-        PanneauGrille.setVisible(false); // Cache la grille de jeu
-        Panneau_info_joueur.revalidate(); // Actualise le panneau
+    initialiserPartieParDefaut(); 
+
+    // Affiche le menu avec les niveaux
+    Panneau_info_joueur.setVisible(true); 
+
+    // Cache la grille de jeu
+    PanneauGrille.setVisible(false); 
+
+    // Cache le panneau d'informations du jeu
+    information.setVisible(false); 
+
+    // Réactualise l'interface pour s'assurer que tout est correctement affiché
+    Panneau_info_joueur.revalidate();
+    Panneau_info_joueur.repaint();
     }//GEN-LAST:event_RejouerActionPerformed
 
     private void réglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_réglesActionPerformed
