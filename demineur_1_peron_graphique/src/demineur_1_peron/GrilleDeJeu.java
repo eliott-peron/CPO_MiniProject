@@ -166,6 +166,31 @@ public class GrilleDeJeu {
         return true;
     }
 
+    public void revelerVoisines(int x, int y) {
+        // Parcours des cellules adjacentes
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dy = -1; dy <= 1; dy++) {
+                int nx = x + dx; // Coordonnée X voisine
+                int ny = y + dy; // Coordonnée Y voisine
+
+                // Vérification des limites de la grille
+                if (nx >= 0 && nx < nbLignes && ny >= 0 && ny < nbColonnes) {
+                    Cellule voisine = matriceCellules[nx][ny];
+
+                    // Révélation si la cellule n'est pas encore dévoilée et n'a pas de drapeau
+                    if (!voisine.isDevoilee() && !voisine.getDrapeau()) {
+                        voisine.revelerCellule();
+
+                        // Si la cellule voisine n'a pas de bombe adjacente, récursion
+                        if (voisine.getNbBombesAdjacentes() == 0) {
+                            revelerVoisines(nx, ny);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     // Méthode pour afficher la grille (représentation textuelle)
     @Override
     public String toString() {
