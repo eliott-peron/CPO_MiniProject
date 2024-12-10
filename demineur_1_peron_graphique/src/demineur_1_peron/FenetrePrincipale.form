@@ -100,6 +100,14 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNiveau3ActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JButton" name="choix_niveau">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="choix"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="choix_niveauActionPerformed"/>
+          </Events>
+        </Component>
         <Component class="javax.swing.JButton" name="r&#xe9;gles">
           <Properties>
             <Property name="text" type="java.lang.String" value="r&#xe9;gles"/>

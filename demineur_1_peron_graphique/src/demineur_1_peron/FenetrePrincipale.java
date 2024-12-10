@@ -73,6 +73,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         jButtonNiveau1 = new javax.swing.JButton();
         jButtonNiveau2 = new javax.swing.JButton();
         jButtonNiveau3 = new javax.swing.JButton();
+        choix_niveau = new javax.swing.JButton();
         régles = new javax.swing.JButton();
         information = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -117,6 +118,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             }
         });
         Panneau_info_joueur.add(jButtonNiveau3);
+
+        choix_niveau.setText("choix");
+        choix_niveau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                choix_niveauActionPerformed(evt);
+            }
+        });
+        Panneau_info_joueur.add(choix_niveau);
 
         régles.setText("régles");
         régles.addActionListener(new java.awt.event.ActionListener() {
@@ -221,6 +230,42 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         javax.swing.JOptionPane.showMessageDialog(this, messageRegles, "Règles du jeu", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_réglesActionPerformed
 
+    private void choix_niveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choix_niveauActionPerformed
+
+        try {
+            // Demande la saisie des dimensions de la grille et du nombre de bombes
+            String inputA = javax.swing.JOptionPane.showInputDialog(this, "Entrez le nombre de lignes :", "Choix du niveau", javax.swing.JOptionPane.QUESTION_MESSAGE);
+            String inputB = javax.swing.JOptionPane.showInputDialog(this, "Entrez le nombre de colonnes :", "Choix du niveau", javax.swing.JOptionPane.QUESTION_MESSAGE);
+            String inputC = javax.swing.JOptionPane.showInputDialog(this, "Entrez le nombre de bombes :", "Choix du niveau", javax.swing.JOptionPane.QUESTION_MESSAGE);
+
+            // Conversion des entrées en entiers
+            int a = Integer.parseInt(inputA);
+            int b = Integer.parseInt(inputB);
+            int c = Integer.parseInt(inputC);
+
+            // Validation des données
+            if (a <= 0 || b <= 0 || c <= 0) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Les valeurs doivent être positives !", "Erreur", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            if (c >= a * b) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Le nombre de bombes doit être inférieur au nombre total de cases !", "Erreur", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Configuration de la grille avec les paramètres saisis
+            PanneauGrille.setVisible(true);
+            Panneau_info_joueur.setVisible(false);
+            configurerGrille(a, b, c);
+            Rejouer.setVisible(true);
+            information.setVisible(true);
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Veuillez entrer des nombres valides !", "Erreur", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+
+
+    }//GEN-LAST:event_choix_niveauActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -260,6 +305,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JPanel PanneauGrille;
     private javax.swing.JPanel Panneau_info_joueur;
     private javax.swing.JButton Rejouer;
+    private javax.swing.JButton choix_niveau;
     private javax.swing.JPanel information;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonNiveau1;
