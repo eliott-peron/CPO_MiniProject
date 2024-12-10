@@ -14,7 +14,7 @@ public class CelluleGraphique extends JButton {
         this.revelee = false;
 
         setPreferredSize(new java.awt.Dimension(largeur, hauteur));
-        setText(""); // Par défaut, la cellule est vide
+        setText(" "); // Par défaut, la cellule est vide
         setEnabled(true); // La cellule est cliquable
 
         // Ajout de l'écouteur de souris
@@ -24,7 +24,7 @@ public class CelluleGraphique extends JButton {
                 if (javax.swing.SwingUtilities.isRightMouseButton(evt)) {
                     // Gestion du drapeau (clic droit)
                     cellule.setDrapeau(!cellule.getDrapeau());
-                    setText(cellule.getDrapeau() ? "D" : "");
+                    setText(cellule.getDrapeau() ? "⚑" : "");
                 } else if (javax.swing.SwingUtilities.isLeftMouseButton(evt)) {
                     // Gestion de la révélation (clic gauche)
                     if (!cellule.isDevoilee() && !cellule.getDrapeau()) {

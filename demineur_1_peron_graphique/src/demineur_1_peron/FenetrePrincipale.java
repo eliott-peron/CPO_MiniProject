@@ -22,11 +22,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     public FenetrePrincipale() {
         initComponents();
 
+        initialiserPartieParDefaut();
+
         PanneauGrille.setVisible(false);
         Rejouer.setVisible(false);
-
-        initialiserPartieParDefaut();
-        
+        information.setVisible(false);
 
     }
 
@@ -73,14 +73,20 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         jButtonNiveau1 = new javax.swing.JButton();
         jButtonNiveau2 = new javax.swing.JButton();
         jButtonNiveau3 = new javax.swing.JButton();
+        régles = new javax.swing.JButton();
         Rejouer = new javax.swing.JButton();
+        information = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanneauGrille.setBackground(new java.awt.Color(51, 0, 255));
+        PanneauGrille.setBackground(new java.awt.Color(0, 0, 255));
+        PanneauGrille.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         PanneauGrille.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 700, 700));
 
@@ -112,6 +118,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         Panneau_info_joueur.add(jButtonNiveau3);
 
+        régles.setText("régles");
+        Panneau_info_joueur.add(régles);
+
         getContentPane().add(Panneau_info_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 400, 100));
 
         Rejouer.setText("Rejouer");
@@ -122,7 +131,26 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         getContentPane().add(Rejouer, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
 
-        setBounds(0, 0, 980, 839);
+        information.setBackground(new java.awt.Color(0, 0, 255));
+        information.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        information.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("information du jeux  ");
+        information.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("clique droit = decouverte de case ");
+        information.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("clique gauche = drapeau  ⚑");
+        information.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+
+        getContentPane().add(information, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 50, 280, 120));
+
+        setBounds(0, 0, 1130, 839);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonNiveau1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNiveau1ActionPerformed
@@ -133,6 +161,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Panneau_info_joueur.setVisible(false);
         configurerGrille(5, 5, 5); // Niveau 1 : 5x5 grille, 5 bombes
         Rejouer.setVisible(true);
+        information.setVisible(true);
 
 
     }//GEN-LAST:event_jButtonNiveau1ActionPerformed
@@ -143,7 +172,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         Panneau_info_joueur.setVisible(false);
         configurerGrille(10, 10, 20); // Niveau 1 : 5x5 grille, 5 bombes
-         Rejouer.setVisible(true);
+        Rejouer.setVisible(true);
+        information.setVisible(true);
+
     }//GEN-LAST:event_jButtonNiveau2ActionPerformed
 
     private void jButtonNiveau3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNiveau3ActionPerformed
@@ -153,6 +184,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Panneau_info_joueur.setVisible(false);
         configurerGrille(20, 20, 40); // Niveau 1 : 5x5 grille, 5 bombes
         Rejouer.setVisible(true);
+        information.setVisible(true);
+
     }//GEN-LAST:event_jButtonNiveau3ActionPerformed
 
     private void RejouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RejouerActionPerformed
@@ -202,10 +235,15 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JPanel PanneauGrille;
     private javax.swing.JPanel Panneau_info_joueur;
     private javax.swing.JButton Rejouer;
+    private javax.swing.JPanel information;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonNiveau1;
     private javax.swing.JButton jButtonNiveau2;
     private javax.swing.JButton jButtonNiveau3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton régles;
     // End of variables declaration//GEN-END:variables
 }
 ///ZER
