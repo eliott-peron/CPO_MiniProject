@@ -231,7 +231,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setVisible(true);
 
         Panneau_info_joueur.setVisible(false);
-        configurerGrille(20, 20, 40); // Niveau 1 : 5x5 grille, 5 bombes
+        configurerGrille(15, 15, 30); // Niveau 1 : 5x5 grille, 5 bombes
         Rejouer.setVisible(true);
         information.setVisible(true);
 
