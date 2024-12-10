@@ -74,11 +74,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         jButtonNiveau2 = new javax.swing.JButton();
         jButtonNiveau3 = new javax.swing.JButton();
         régles = new javax.swing.JButton();
-        Rejouer = new javax.swing.JButton();
         information = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        Rejouer = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -119,17 +119,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Panneau_info_joueur.add(jButtonNiveau3);
 
         régles.setText("régles");
+        régles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                réglesActionPerformed(evt);
+            }
+        });
         Panneau_info_joueur.add(régles);
 
         getContentPane().add(Panneau_info_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 400, 100));
-
-        Rejouer.setText("Rejouer");
-        Rejouer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RejouerActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Rejouer, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
 
         information.setBackground(new java.awt.Color(0, 0, 255));
         information.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -141,14 +138,22 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         information.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("clique droit = decouverte de case ");
+        jLabel2.setText("clique gauche = decouverte de case ");
         information.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("clique gauche = drapeau  ⚑");
+        jLabel3.setText("clique droit = drapeau  ⚑");
         information.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        getContentPane().add(information, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 50, 280, 120));
+        Rejouer.setText("Rejouer");
+        Rejouer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RejouerActionPerformed(evt);
+            }
+        });
+        information.add(Rejouer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
+
+        getContentPane().add(information, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 50, 280, 160));
 
         setBounds(0, 0, 1130, 839);
     }// </editor-fold>//GEN-END:initComponents
@@ -195,6 +200,26 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setVisible(false); // Cache la grille de jeu
         Panneau_info_joueur.revalidate(); // Actualise le panneau
     }//GEN-LAST:event_RejouerActionPerformed
+
+    private void réglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_réglesActionPerformed
+        String messageRegles = """
+    Bienvenue dans le jeu Démineur !
+
+    Objectif :
+    - Dévoilez toutes les cases sans exploser de bombes.
+
+    Commandes :
+    - Cliquez avec le bouton droit pour marquer une case avec un drapeau (⚑).
+    - Cliquez avec le bouton gauche pour révéler une case.
+
+    Conseils :
+    - Les numéros affichés sur les cases révèlent combien de bombes se trouvent dans les cases adjacentes.
+    - Utilisez ces indices pour déduire les positions des bombes.
+
+    Bonne chance !
+    """;
+        javax.swing.JOptionPane.showMessageDialog(this, messageRegles, "Règles du jeu", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_réglesActionPerformed
 
     /**
      * @param args the command line arguments
