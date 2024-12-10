@@ -84,6 +84,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     // Si toutes les cases non-bombes sont révélées, la partie est gagnée
     terminerPartie(true);
 }
+    
+    
 
 
    
@@ -175,11 +177,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("information du jeux  ");
+        jLabel1.setText("information de jeux  ");
         information.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("clique gauche = decouverte de case ");
+        jLabel2.setText("clique gauche = decouverte d'une case ");
         information.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
