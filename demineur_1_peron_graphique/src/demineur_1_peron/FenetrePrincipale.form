@@ -110,7 +110,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="r&#xe9;gles">
           <Properties>
-            <Property name="text" type="java.lang.String" value="r&#xe9;gles"/>
+            <Property name="text" type="java.lang.String" value="r&#xe8;gles"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="r&#xe9;glesActionPerformed"/>

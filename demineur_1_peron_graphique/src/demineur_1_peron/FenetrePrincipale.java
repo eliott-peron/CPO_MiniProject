@@ -161,7 +161,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         Panneau_info_joueur.add(choix_niveau);
 
-        régles.setText("régles");
+        régles.setText("règles");
         régles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 réglesActionPerformed(evt);
@@ -208,7 +208,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setVisible(true);
 
         Panneau_info_joueur.setVisible(false);
-        configurerGrille(5, 5, 5); // Niveau 1 : 5x5 grille, 5 bombes
+        configurerGrille(5, 5, 5); 
         Rejouer.setVisible(true);
         information.setVisible(true);
 
@@ -220,7 +220,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setVisible(true);
 
         Panneau_info_joueur.setVisible(false);
-        configurerGrille(10, 10, 20); // Niveau 1 : 5x5 grille, 5 bombes
+        configurerGrille(10, 10, 20); 
         Rejouer.setVisible(true);
         information.setVisible(true);
 
@@ -231,7 +231,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setVisible(true);
 
         Panneau_info_joueur.setVisible(false);
-        configurerGrille(15, 15, 30); // Niveau 1 : 5x5 grille, 5 bombes
+        configurerGrille(15, 15, 30);
         Rejouer.setVisible(true);
         information.setVisible(true);
 
