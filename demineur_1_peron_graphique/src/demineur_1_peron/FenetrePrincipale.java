@@ -25,7 +25,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setVisible(false);
         Rejouer.setVisible(false);
         information.setVisible(false);
-        
 
     }
 
@@ -48,47 +47,45 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.revalidate(); // Actualise l'affichage
         PanneauGrille.repaint();
     }
-    
-    
+
     public void terminerPartie(boolean victoire) {
     // Désactiver toutes les cellules
     for (int i = 0; i < grille.matriceCellules.length; i++) {
         for (int j = 0; j < grille.matriceCellules[i].length; j++) {
             CelluleGraphique bouton_cellule = (CelluleGraphique) PanneauGrille.getComponent(i * grille.matriceCellules[i].length + j);
             bouton_cellule.setEnabled(false);
-            
         }
     }
 
     // Afficher un message de fin
-    String message = victoire ? "Félicitations ! Vous avez gagné !" : "Vous avez cliqué sur une bombe ! Partie terminée, cliquer sur rejouer.";
+    String message = victoire 
+        ? "Félicitations ! Vous avez gagné !" 
+        : "Vous avez cliqué sur une bombe ! Partie terminée.";
     javax.swing.JOptionPane.showMessageDialog(this, message, "Fin de partie", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
-    // Activer le bouton rejouer
-    Rejouer.setVisible(true);
+    // Réinitialiser la partie dans les deux cas
+    initialiserPartieParDefaut();
+    Panneau_info_joueur.setVisible(true); 
+    PanneauGrille.setVisible(false); 
+    information.setVisible(false); 
+    Panneau_info_joueur.revalidate();
+    Panneau_info_joueur.repaint();
 }
 
-    
+
     public void verifierVictoire() {
-    for (int i = 0; i < grille.matriceCellules.length; i++) {
-        for (int j = 0; j < grille.matriceCellules[i].length; j++) {
-            Cellule cellule = grille.matriceCellules[i][j];
-            if (!cellule.getPresenceBombe() && !cellule.isDevoilee()) {
-                return; // Il reste des cases à découvrir
+        for (int i = 0; i < grille.matriceCellules.length; i++) {
+            for (int j = 0; j < grille.matriceCellules[i].length; j++) {
+                Cellule cellule = grille.matriceCellules[i][j];
+                if (!cellule.getPresenceBombe() && !cellule.isDevoilee()) {
+                    return; // Il reste des cases à découvrir
+                }
             }
         }
+
+        // Si toutes les cases non-bombes sont révélées, la partie est gagnée
+        terminerPartie(true);
     }
-
-    // Si toutes les cases non-bombes sont révélées, la partie est gagnée
-    terminerPartie(true);
-}
-    
-    
-
-
-   
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -176,16 +173,19 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         information.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("information de jeux  ");
-        information.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+        information.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("clique gauche = decouverte d'une case ");
         information.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("clique droit = drapeau  ⚑");
+        jLabel3.setText("clique droit = drapeau  ");
         information.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         Rejouer.setBackground(new java.awt.Color(255, 255, 0));
@@ -197,7 +197,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 RejouerActionPerformed(evt);
             }
         });
-        information.add(Rejouer, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 80, 30));
+        information.add(Rejouer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 80, 30));
 
         getContentPane().add(information, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 50, 280, 160));
 
@@ -210,7 +210,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setVisible(true);
 
         Panneau_info_joueur.setVisible(false);
-        configurerGrille(5, 5, 5); 
+        configurerGrille(5, 5, 5);
         Rejouer.setVisible(true);
         information.setVisible(true);
 
@@ -222,7 +222,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setVisible(true);
 
         Panneau_info_joueur.setVisible(false);
-        configurerGrille(10, 10, 20); 
+        configurerGrille(10, 10, 20);
         Rejouer.setVisible(true);
         information.setVisible(true);
 
@@ -240,20 +240,20 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNiveau3ActionPerformed
 
     private void RejouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RejouerActionPerformed
-    initialiserPartieParDefaut(); 
+        initialiserPartieParDefaut();
 
-    // Affiche le menu avec les niveaux
-    Panneau_info_joueur.setVisible(true); 
+        // Affiche le menu avec les niveaux
+        Panneau_info_joueur.setVisible(true);
 
-    // Cache la grille de jeu
-    PanneauGrille.setVisible(false); 
+        // Cache la grille de jeu
+        PanneauGrille.setVisible(false);
 
-    // Cache le panneau d'informations du jeu
-    information.setVisible(false); 
+        // Cache le panneau d'informations du jeu
+        information.setVisible(false);
 
-    // Réactualise l'interface pour s'assurer que tout est correctement affiché
-    Panneau_info_joueur.revalidate();
-    Panneau_info_joueur.repaint();
+        // Réactualise l'interface pour s'assurer que tout est correctement affiché
+        Panneau_info_joueur.revalidate();
+        Panneau_info_joueur.repaint();
     }//GEN-LAST:event_RejouerActionPerformed
 
     private void réglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_réglesActionPerformed
