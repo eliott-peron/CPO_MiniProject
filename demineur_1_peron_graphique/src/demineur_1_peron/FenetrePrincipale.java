@@ -4,8 +4,6 @@
  */
 package demineur_1_peron;
 
-import javax.swing.JButton;
-
 import java.awt.GridLayout;
 
 /**
@@ -129,7 +127,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         Panneau_info_joueur.setBackground(new java.awt.Color(51, 51, 255));
         Panneau_info_joueur.setForeground(new java.awt.Color(153, 153, 153));
-        Panneau_info_joueur.setLayout(new java.awt.GridLayout());
+        Panneau_info_joueur.setLayout(new java.awt.GridLayout(1, 0));
 
         jButtonNiveau1.setText("niveau 1");
         jButtonNiveau1.addActionListener(new java.awt.event.ActionListener() {
@@ -197,11 +195,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 RejouerActionPerformed(evt);
             }
         });
-        information.add(Rejouer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
+        information.add(Rejouer, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 80, 30));
 
         getContentPane().add(information, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 50, 280, 160));
 
-        setBounds(0, 0, 1130, 839);
+        setBounds(0, 0, 1096, 839);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonNiveau1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNiveau1ActionPerformed
