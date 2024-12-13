@@ -188,7 +188,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         jLabel3.setText("clique droit = drapeau  ⚑");
         information.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        Rejouer.setBackground(new java.awt.Color(102, 255, 255));
+        Rejouer.setBackground(new java.awt.Color(255, 255, 0));
+        Rejouer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Rejouer.setForeground(new java.awt.Color(0, 0, 255));
         Rejouer.setText("Rejouer");
         Rejouer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
