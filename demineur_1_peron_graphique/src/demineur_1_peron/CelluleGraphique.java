@@ -14,7 +14,7 @@ public class CelluleGraphique extends JButton {
         this.revelee = false;
 
         setPreferredSize(new java.awt.Dimension(largeur, hauteur));
-        setText(" "); // Par défaut, la cellule est vide
+        setText("?"); // Par défaut, la cellule est vide
         setEnabled(true); // La cellule est cliquable
 
         // Ajout de l'écouteur de souris

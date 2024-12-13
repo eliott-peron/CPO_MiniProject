@@ -116,8 +116,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         Rejouer = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -202,13 +200,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         information.add(Rejouer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
 
         getContentPane().add(information, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 50, 280, 160));
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 0));
-
-        jLabel4.setText("salut a tous les amis");
-        jPanel3.add(jLabel4);
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 240, 250, 210));
 
         setBounds(0, 0, 1130, 839);
     }// </editor-fold>//GEN-END:initComponents
@@ -369,10 +360,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JButton régles;
     // End of variables declaration//GEN-END:variables
 }
