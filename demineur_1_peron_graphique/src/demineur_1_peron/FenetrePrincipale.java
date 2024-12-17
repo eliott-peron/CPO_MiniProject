@@ -31,6 +31,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void initialiserPartieParDefaut() {
         configurerGrille(5, 5, 5); // Niveau 1 par défaut
     }
+    
+    
+    
 
     private void configurerGrille(int nbLignes, int nbColonnes, int nbBombe) {
         grille = new GrilleDeJeu(nbLignes, nbColonnes, nbBombe);
