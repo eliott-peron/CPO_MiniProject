@@ -40,6 +40,7 @@ public class Cellule {
             this.devoilee = true;
         }
     }
+    
 
     // Accesseur pour le nombre de bombes adjacentes
     public int getNbBombesAdjacentes() {

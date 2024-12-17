@@ -49,29 +49,28 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     public void terminerPartie(boolean victoire) {
-    // Désactiver toutes les cellules
-    for (int i = 0; i < grille.matriceCellules.length; i++) {
-        for (int j = 0; j < grille.matriceCellules[i].length; j++) {
-            CelluleGraphique bouton_cellule = (CelluleGraphique) PanneauGrille.getComponent(i * grille.matriceCellules[i].length + j);
-            bouton_cellule.setEnabled(false);
+        // Désactiver toutes les cellules
+        for (int i = 0; i < grille.matriceCellules.length; i++) {
+            for (int j = 0; j < grille.matriceCellules[i].length; j++) {
+                CelluleGraphique bouton_cellule = (CelluleGraphique) PanneauGrille.getComponent(i * grille.matriceCellules[i].length + j);
+                bouton_cellule.setEnabled(false);
+            }
         }
+
+        // Afficher un message de fin
+        String message = victoire
+                ? "Félicitations ! Vous avez gagné !"
+                : "Vous avez cliqué sur une bombe ! Partie terminée.";
+        javax.swing.JOptionPane.showMessageDialog(this, message, "Fin de partie", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+        // Réinitialiser la partie dans les deux cas
+        initialiserPartieParDefaut();
+        Panneau_info_joueur.setVisible(true);
+        PanneauGrille.setVisible(false);
+        information.setVisible(false);
+        Panneau_info_joueur.revalidate();
+        Panneau_info_joueur.repaint();
     }
-
-    // Afficher un message de fin
-    String message = victoire 
-        ? "Félicitations ! Vous avez gagné !" 
-        : "Vous avez cliqué sur une bombe ! Partie terminée.";
-    javax.swing.JOptionPane.showMessageDialog(this, message, "Fin de partie", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-
-    // Réinitialiser la partie dans les deux cas
-    initialiserPartieParDefaut();
-    Panneau_info_joueur.setVisible(true); 
-    PanneauGrille.setVisible(false); 
-    information.setVisible(false); 
-    Panneau_info_joueur.revalidate();
-    Panneau_info_joueur.repaint();
-}
-
 
     public void verifierVictoire() {
         for (int i = 0; i < grille.matriceCellules.length; i++) {
@@ -86,6 +85,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         // Si toutes les cases non-bombes sont révélées, la partie est gagnée
         terminerPartie(true);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -191,7 +192,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Rejouer.setBackground(new java.awt.Color(255, 255, 0));
         Rejouer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Rejouer.setForeground(new java.awt.Color(0, 0, 255));
-        Rejouer.setText("Rejouer");
+        Rejouer.setText("MENU");
         Rejouer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RejouerActionPerformed(evt);
