@@ -146,27 +146,11 @@ public class GrilleDeJeu {
             System.out.println("Bombe revelee ! Vous avez perdu.");
         } else if (cellule.getNbBombesAdjacentes() == 0) {
             // Si la cellule est vide, révéler ses voisins
-            for (int i = -1; i <= 1; i++) {
-                for (int j = -1; j <= 1; j++) {
-                    revelerCellule(ligne + i, colonne + j);
-                }
-            }
+            revelerVoisines(ligne, colonne);
         }
     }
 
-    // Méthode pour vérifier si toutes les cellules sûres ont été révélées
-    public boolean toutesCellulesRevelees() {
-        for (int i = 0; i < nbLignes; i++) {
-            for (int j = 0; j < nbColonnes; j++) {
-                Cellule cellule = matriceCellules[i][j];
-                if (!cellule.getPresenceBombe() && !cellule.isDevoilee()) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
+    // Méthode pour révéler les voisins d'une cellule vide
     public void revelerVoisines(int x, int y) {
         // Parcours des cellules adjacentes
         for (int dx = -1; dx <= 1; dx++) {
@@ -194,6 +178,19 @@ public class GrilleDeJeu {
     
     
     
+
+    // Méthode pour vérifier si toutes les cellules sûres ont été révélées
+    public boolean toutesCellulesRevelees() {
+        for (int i = 0; i < nbLignes; i++) {
+            for (int j = 0; j < nbColonnes; j++) {
+                Cellule cellule = matriceCellules[i][j];
+                if (!cellule.getPresenceBombe() && !cellule.isDevoilee()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     // Méthode pour afficher la grille (représentation textuelle)
     @Override

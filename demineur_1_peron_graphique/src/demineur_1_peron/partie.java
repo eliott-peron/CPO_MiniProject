@@ -56,61 +56,66 @@ public class partie {
         System.out.println("La partie a commencé !");
     }
 
-    private void gererClic(int ligne, int colonne) {
-        if (!enCours) {
-            return;
-        }
 
-        Cellule cellule = grille.getMatriceCellules()[ligne][colonne];
-
-        if (cellule.isDevoilee()) {
-            return; // Ne rien faire si la cellule est déjà dévoilée
-        }
-
-        cellule.revelerCellule(); // Révèle la cellule
-
-        if (cellule.getPresenceBombe()) {
-            // Si c'est une bombe, afficher "B" et terminer la partie
-            boutons[ligne][colonne].setText("B");
-            boutons[ligne][colonne].setEnabled(false);
-            JOptionPane.showMessageDialog(frame, "Vous avez cliqué sur une bombe ! Partie terminée.");
-            enCours = false;
-            finDePartie();
-        } else {
-            // Afficher le nombre de bombes adjacentes ou vider les cases adjacentes si vide
-            int nbBombesAdjacentes = cellule.getNbBombesAdjacentes();
-            if (nbBombesAdjacentes > 0) {
-                boutons[ligne][colonne].setText(String.valueOf(nbBombesAdjacentes));
-            } else {
-                boutons[ligne][colonne].setText(" ");
-                revelerVoisins(ligne, colonne);
-            }
-            boutons[ligne][colonne].setEnabled(false);
-        }
-
-        if (grille.toutesCellulesRevelees()) {
-            JOptionPane.showMessageDialog(frame, "Félicitations ! Vous avez gagné !");
-            enCours = false;
-            finDePartie();
-        }
+   private void gererClic(int ligne, int colonne) {
+    if (!enCours) {
+        return;
     }
 
-    private void revelerVoisins(int ligne, int colonne) {
-        for (int i = -1; i <= 1; i++) {
-            for (int j = -1; j <= 1; j++) {
-                int voisinLigne = ligne + i;
-                int voisinColonne = colonne + j;
+    Cellule cellule = grille.getMatriceCellules()[ligne][colonne];
 
-                if (voisinLigne >= 0 && voisinLigne < grille.getMatriceCellules().length &&
-                        voisinColonne >= 0 && voisinColonne < grille.getMatriceCellules()[0].length) {
-                    Cellule voisin = grille.getMatriceCellules()[voisinLigne][voisinColonne];
-                    if (!voisin.isDevoilee() && !voisin.getPresenceBombe()) {
-                        gererClic(voisinLigne, voisinColonne); // Révéler de manière récursive
-                    }
+    if (cellule.isDevoilee()) {
+        return; // Ne rien faire si la cellule est déjà dévoilée
+    }
+
+    cellule.revelerCellule(); // Révèle la cellule
+
+    if (cellule.getPresenceBombe()) {
+        // Si c'est une bombe, afficher "B" et terminer la partie
+        boutons[ligne][colonne].setText("B");
+        boutons[ligne][colonne].setEnabled(false);
+        JOptionPane.showMessageDialog(frame, "Vous avez cliqué sur une bombe ! Partie terminée.");
+        enCours = false;
+        finDePartie();
+    } else {
+        // Afficher le nombre de bombes adjacentes ou vider les cases adjacentes si vide
+        int nbBombesAdjacentes = cellule.getNbBombesAdjacentes();
+        if (nbBombesAdjacentes > 0) {
+            boutons[ligne][colonne].setText(String.valueOf(nbBombesAdjacentes));
+        } else {
+            boutons[ligne][colonne].setText(" ");
+            revelerVoisins(ligne, colonne); // Révéler les voisins récursivement
+        }
+        boutons[ligne][colonne].setEnabled(false);
+    }
+
+    if (grille.toutesCellulesRevelees()) {
+        JOptionPane.showMessageDialog(frame, "Félicitations ! Vous avez gagné !");
+        enCours = false;
+        finDePartie();
+    }
+}
+
+private void revelerVoisins(int ligne, int colonne) {
+    // Parcours des cellules adjacentes
+    for (int i = -1; i <= 1; i++) {
+        for (int j = -1; j <= 1; j++) {
+            int voisinLigne = ligne + i;
+            int voisinColonne = colonne + j;
+
+            if (voisinLigne >= 0 && voisinLigne < grille.getMatriceCellules().length &&
+                    voisinColonne >= 0 && voisinColonne < grille.getMatriceCellules()[0].length) {
+                Cellule celluleVoisine = grille.getMatriceCellules()[voisinLigne][voisinColonne];
+
+                // Si la cellule voisine n'est pas encore révélée et ne contient pas de drapeau
+                if (!celluleVoisine.isDevoilee() && !celluleVoisine.getDrapeau()) {
+                    // Révélons la cellule voisine
+                    gererClic(voisinLigne, voisinColonne);
                 }
             }
         }
     }
+}
 
     private void finDePartie() {
         for (int i = 0; i < grille.getMatriceCellules().length; i++) {
