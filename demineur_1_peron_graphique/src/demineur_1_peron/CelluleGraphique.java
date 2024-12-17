@@ -17,6 +17,9 @@ public class CelluleGraphique extends JButton {
         setText(" "); // Par défaut, la cellule est vide
         setEnabled(true); // La cellule est cliquable
 
+         setBackground(new java.awt.Color(50, 50, 80)); // Fond sombre
+          setForeground(java.awt.Color.BLACK); // Texte blanc
+          setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 150), 1)); // Bordure fine
         // Ajout de l'écouteur de souris
         addMouseListener(new MouseAdapter() {
             @Override
@@ -59,6 +62,8 @@ public class CelluleGraphique extends JButton {
             ((FenetrePrincipale) getTopLevelAncestor()).verifierVictoire();
         }
     }
+    
+    
     
     
     
