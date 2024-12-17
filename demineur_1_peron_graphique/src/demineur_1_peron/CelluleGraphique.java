@@ -46,22 +46,24 @@ public class CelluleGraphique extends JButton {
         return cellule;
     }
 
-    public void revelerCellule() {
-        revelee = true;
-        cellule.revelerCellule();
-        setEnabled(false);
+   public void revelerCellule() {
+    revelee = true;
+    cellule.revelerCellule();
+    setEnabled(false);
 
-        if (cellule.getPresenceBombe()) {
-            setText("💣"); // Marque une bombe
-            ((FenetrePrincipale) getTopLevelAncestor()).terminerPartie(false); // Fin de partie avec défaite
-        } else {
-            int bombesAdjacentes = cellule.getNbBombesAdjacentes();
-            setText(bombesAdjacentes > 0 ? String.valueOf(bombesAdjacentes) : "");
+    if (cellule.getPresenceBombe()) {
+        setText("💣"); // Marque une bombe
+        ((FenetrePrincipale) getTopLevelAncestor()).terminerPartie(false); // Fin de partie avec défaite
+    } else {
+        int bombesAdjacentes = cellule.getNbBombesAdjacentes();
+        // Affiche 0 si aucune bombe adjacente
+        setText(bombesAdjacentes > 0 ? String.valueOf(bombesAdjacentes) : "0");
 
-            // Vérification de victoire
-            ((FenetrePrincipale) getTopLevelAncestor()).verifierVictoire();
-        }
+        // Vérification de victoire
+        ((FenetrePrincipale) getTopLevelAncestor()).verifierVictoire();
     }
+}
+
     
     
     

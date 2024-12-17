@@ -191,6 +191,9 @@ public class GrilleDeJeu {
             }
         }
     }
+    
+    
+    
 
     // Méthode pour afficher la grille (représentation textuelle)
     @Override

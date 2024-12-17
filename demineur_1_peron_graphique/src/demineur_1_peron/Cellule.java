@@ -11,6 +11,7 @@ public class Cellule {
     private boolean drapeau;         // Indique si la cellule est marquée par un drapeau
     private int nbBombesAdjacentes;  // Nombre de bombes dans les cellules adjacentes
     
+    
     // Constructeur
     public Cellule() {
         this.presenceBombe = false; // Par défaut, pas de bombe
