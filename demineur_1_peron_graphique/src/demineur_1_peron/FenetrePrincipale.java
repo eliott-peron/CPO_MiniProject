@@ -120,22 +120,23 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanneauGrille.setBackground(new java.awt.Color(0, 0, 255));
+        PanneauGrille.setBackground(new java.awt.Color(255, 0, 0));
         PanneauGrille.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         PanneauGrille.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         PanneauGrille.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, -40, -1, -1));
 
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 700, 700));
 
-        Panneau_info_joueur.setBackground(new java.awt.Color(51, 51, 255));
+        Panneau_info_joueur.setBackground(new java.awt.Color(255, 0, 51));
         Panneau_info_joueur.setForeground(new java.awt.Color(153, 153, 153));
-        Panneau_info_joueur.setLayout(new java.awt.GridLayout(1, 0));
+        Panneau_info_joueur.setLayout(new java.awt.GridLayout());
 
         jButtonNiveau1.setText("niveau 1");
         jButtonNiveau1.addActionListener(new java.awt.event.ActionListener() {
@@ -179,29 +180,26 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(Panneau_info_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 400, 100));
 
-        information.setBackground(new java.awt.Color(0, 0, 255));
+        information.setBackground(new java.awt.Color(255, 0, 0));
         information.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         information.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel1.setText("Information de jeu  ");
         information.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("clique gauche = decouverte d'une case ");
+        jLabel2.setText("Clique gauche = découverte d'une case ");
         information.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("clique droit = drapeau  ");
+        jLabel3.setText("Clique droit = drapeau  ");
         information.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        Rejouer.setBackground(new java.awt.Color(255, 255, 0));
-        Rejouer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Rejouer.setForeground(new java.awt.Color(0, 0, 255));
+        Rejouer.setBackground(new java.awt.Color(0, 0, 0));
+        Rejouer.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Rejouer.setForeground(new java.awt.Color(255, 0, 0));
         Rejouer.setText("MENU");
         Rejouer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,23 +210,25 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(information, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 50, 280, 160));
 
-        nomination.setBackground(new java.awt.Color(51, 51, 255));
+        nomination.setBackground(new java.awt.Color(255, 0, 51));
         nomination.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("- Leobz la street de marseille");
-        nomination.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setText("- Leobz la street de Marseille");
+        nomination.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("- Eliott le bg du 69");
-        nomination.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 170, -1));
+        nomination.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 170, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Démineur de : ");
-        nomination.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 120, -1));
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setText("💣 Jeu du démineur 💣");
+        nomination.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 220, -1));
+
+        jLabel7.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        jLabel7.setText("Créateurs:");
+        nomination.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
         getContentPane().add(nomination, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 400, 90));
 
@@ -394,6 +394,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
