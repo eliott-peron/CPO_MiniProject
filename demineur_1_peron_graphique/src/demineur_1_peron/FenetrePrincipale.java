@@ -62,8 +62,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         // Afficher un message de fin
         String message = victoire
-                ? "Félicitations ! Vous avez gagné !"
-                : "Vous avez cliqué sur une bombe ! Partie terminée.";
+                ? "Félicitations ! Vous avez gagné !go aller au bar lets go bahahahahah "
+                : "Vous avez cliqué sur une bombe ! Emoji tete de mort fini dans le game bye bitch.";
         javax.swing.JOptionPane.showMessageDialog(this, message, "Fin de partie", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
         // Réinitialiser la partie dans les deux cas
