@@ -62,8 +62,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         // Afficher un message de fin
         String message = victoire
-                ? "Félicitations ! Vous avez gagné !go aller au bar lets go bahahahahah "
-                : "Vous avez cliqué sur une bombe ! Emoji tete de mort fini dans le game bye bitch.";
+                ? "Félicitations ! Vous avez gagné "
+                : "Vous avez cliqué sur une bombe ! Emoji tete de mort fini dans le game bye.";
         javax.swing.JOptionPane.showMessageDialog(this, message, "Fin de partie", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
         // Réinitialiser la partie dans les deux cas
@@ -136,7 +136,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 700, 700));
 
-        Panneau_info_joueur.setBackground(new java.awt.Color(255, 0, 51));
+        Panneau_info_joueur.setBackground(new java.awt.Color(255, 51, 0));
         Panneau_info_joueur.setForeground(new java.awt.Color(153, 153, 153));
         Panneau_info_joueur.setLayout(new java.awt.GridLayout());
 
