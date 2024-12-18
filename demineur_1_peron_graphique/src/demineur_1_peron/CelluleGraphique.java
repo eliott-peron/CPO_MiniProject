@@ -17,9 +17,9 @@ public class CelluleGraphique extends JButton {
         setText(" "); // Par défaut, la cellule est vide
         setEnabled(true); // La cellule est cliquable
 
-         setBackground(new java.awt.Color(50, 50, 80)); // Fond sombre
-          setForeground(java.awt.Color.BLACK); // Texte blanc
-          setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 150), 1)); // Bordure fine
+        setBackground(new java.awt.Color(50, 50, 80)); // Fond sombre
+        setForeground(java.awt.Color.BLACK); // Texte blanc
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 150), 1)); // Bordure fine
         // Ajout de l'écouteur de souris
         addMouseListener(new MouseAdapter() {
             @Override
@@ -46,29 +46,22 @@ public class CelluleGraphique extends JButton {
         return cellule;
     }
 
-   public void revelerCellule() {
-    revelee = true;
-    cellule.revelerCellule();
-    setEnabled(false);
+    public void revelerCellule() {
+        revelee = true;
+        cellule.revelerCellule();
+        setEnabled(false);
 
-    if (cellule.getPresenceBombe()) {
-        setText("💣"); // Marque une bombe
-        ((FenetrePrincipale) getTopLevelAncestor()).terminerPartie(false); // Fin de partie avec défaite
-    } else {
-        int bombesAdjacentes = cellule.getNbBombesAdjacentes();
-        // Affiche 0 si aucune bombe adjacente
-        setText(bombesAdjacentes > 0 ? String.valueOf(bombesAdjacentes) : "0");
+        if (cellule.getPresenceBombe()) {
+            setText("💣"); // Marque une bombe
+            ((FenetrePrincipale) getTopLevelAncestor()).terminerPartie(false); // Fin de partie avec défaite
+        } else {
+            int bombesAdjacentes = cellule.getNbBombesAdjacentes();
+            // Affiche 0 si aucune bombe adjacente
+            setText(bombesAdjacentes > 0 ? String.valueOf(bombesAdjacentes) : "0");
 
-        // Vérification de victoire
-        ((FenetrePrincipale) getTopLevelAncestor()).verifierVictoire();
+            // Vérification de victoire
+            ((FenetrePrincipale) getTopLevelAncestor()).verifierVictoire();
+        }
     }
-}
-
-    
-    
-    
-    
-    
-    
 
 }
