@@ -138,6 +138,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Panneau_info_joueur.setForeground(new java.awt.Color(153, 153, 153));
         Panneau_info_joueur.setLayout(new java.awt.GridLayout());
 
+        jButtonNiveau1.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonNiveau1.setForeground(new java.awt.Color(255, 0, 0));
         jButtonNiveau1.setText("niveau 1");
         jButtonNiveau1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,6 +148,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         Panneau_info_joueur.add(jButtonNiveau1);
 
+        jButtonNiveau2.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonNiveau2.setForeground(new java.awt.Color(255, 0, 0));
         jButtonNiveau2.setText("niveau 2");
         jButtonNiveau2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +158,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         Panneau_info_joueur.add(jButtonNiveau2);
 
+        jButtonNiveau3.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonNiveau3.setForeground(new java.awt.Color(255, 0, 0));
         jButtonNiveau3.setText("niveau 3");
         jButtonNiveau3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +168,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         Panneau_info_joueur.add(jButtonNiveau3);
 
+        choix_niveau.setBackground(new java.awt.Color(0, 0, 0));
+        choix_niveau.setForeground(new java.awt.Color(255, 0, 0));
         choix_niveau.setText("choix");
         choix_niveau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,6 +178,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         Panneau_info_joueur.add(choix_niveau);
 
+        régles.setBackground(new java.awt.Color(0, 0, 0));
+        régles.setForeground(new java.awt.Color(255, 0, 0));
         régles.setText("règles");
         régles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
