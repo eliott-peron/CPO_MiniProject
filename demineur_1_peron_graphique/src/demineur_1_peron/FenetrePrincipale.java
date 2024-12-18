@@ -73,6 +73,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         information.setVisible(false);
         Panneau_info_joueur.revalidate();
         Panneau_info_joueur.repaint();
+        
+        
     }
 
     public void verifierVictoire() {
